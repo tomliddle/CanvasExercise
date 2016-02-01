@@ -8,10 +8,21 @@ class MainClassTest extends WordSpec with Matchers with BeforeAndAfterEach{
 
 	"MainClass" when {
 
-		"running" should {
+		"Drawing a line" should {
 
-			"run correctly" in {
+			"draw a line of length 1" in {
+				val canvas = Canvas.create(4, 4)
 
+				val array =
+					Seq(
+						Seq.fill[Char](5)('-'),
+						Seq('|', ' ', ' ', ' ', '|'),
+						Seq('|', ' ', ' ', ' ', '|'),
+						Seq('|', ' ', ' ', ' ', '|'),
+						Seq('|', ' ', ' ', ' ', '|'),
+						Seq.fill[Char](5)('-'))
+
+				canvas.drawLine(0, 0, 0, 0) should equal(Canvas(array))
 			}
 
 		}
