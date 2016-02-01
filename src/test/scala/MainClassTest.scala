@@ -15,14 +15,14 @@ class MainClassTest extends WordSpec with Matchers with BeforeAndAfterEach{
 
 				val array =
 					Seq(
-						Seq.fill[Char](5)('-'),
-						Seq('|', ' ', ' ', ' ', '|'),
-						Seq('|', ' ', ' ', ' ', '|'),
-						Seq('|', ' ', ' ', ' ', '|'),
-						Seq('|', ' ', ' ', ' ', '|'),
-						Seq.fill[Char](5)('-'))
+						Seq.fill[Char](6)('-'),
+						Seq('|', 'X', ' ', ' ', ' ', '|'),
+						Seq('|', ' ', ' ', ' ', ' ', '|'),
+						Seq('|', ' ', ' ', ' ', ' ', '|'),
+						Seq('|', ' ', ' ', ' ', ' ', '|'),
+						Seq.fill[Char](6)('-'))
 
-				canvas.drawLine(0, 0, 0, 0) should equal(Canvas(array))
+				canvas.drawLine(1, 1, 1, 1) should equal(Canvas(array))
 			}
 
 		}
