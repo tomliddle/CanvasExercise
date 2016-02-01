@@ -3,10 +3,10 @@ import org.scalatest.BeforeAndAfterEach
 import org.scalatest.Matchers
 import org.scalatest.WordSpec
 
-class MainClassTest extends WordSpec with Matchers with BeforeAndAfterEach{
+class CanvasTest extends WordSpec with Matchers with BeforeAndAfterEach{
 
 
-	"MainClass" when {
+	"CanvasTest" when {
 
 		"Drawing a line" should {
 
