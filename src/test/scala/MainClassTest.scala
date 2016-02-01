@@ -181,5 +181,82 @@ class MainClassTest extends WordSpec with Matchers with BeforeAndAfterEach{
 				canvas.drawFill(2, 4, 'A') should equal(Canvas(array))
 			}
 		}
+
+		"checking for negative input" should {
+
+			"not allow negative inputs for canvas create" in {
+				try {
+					Canvas.create(-1, -1)
+					fail()
+				}
+				catch {
+					case e: IllegalArgumentException => // correct behaviour
+				}
+			}
+
+			"not allow negative inputs for create line" in {
+				try {
+					Canvas.create(10, 10).drawLine(-1, 1, 10, 1)
+					fail()
+				}
+				catch {
+					case e: IllegalArgumentException => // correct behaviour
+				}
+			}
+
+			"not allow negative inputs for create rectangle" in {
+				try {
+					Canvas.create(10, 10).drawRectangle(-1, 1, 10, 1)
+					fail()
+				}
+				catch {
+					case e: IllegalArgumentException => // correct behaviour
+				}
+			}
+
+			"not allow negative inputs for fill" in {
+				try {
+					Canvas.create(10, 10).drawFill(-1, 1, 'A')
+					fail()
+				}
+				catch {
+					case e: IllegalArgumentException => // correct behaviour
+				}
+			}
+		}
+
+		"when checking for input outside the canvas" should {
+
+			"check for create line" in {
+				try {
+					Canvas.create(10, 10).drawLine(20, 20, 20, 40)
+					fail()
+				}
+				catch {
+					case e: IllegalArgumentException => // correct behaviour
+				}
+			}
+
+			"check for draw rectangle" in {
+				try {
+					Canvas.create(10, 10).drawRectangle(20, 20, 20, 40)
+					fail()
+				}
+				catch {
+					case e: IllegalArgumentException => // correct behaviour
+				}
+			}
+
+			"check for fill" in {
+				try {
+					Canvas.create(10, 10).drawFill(40, 900, 'A')
+					fail()
+				}
+				catch {
+					case e: IllegalArgumentException => // correct behaviour
+				}
+			}
+		}
 	}
+
 }
