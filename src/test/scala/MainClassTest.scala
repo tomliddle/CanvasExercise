@@ -118,5 +118,68 @@ class MainClassTest extends WordSpec with Matchers with BeforeAndAfterEach{
 				canvas.drawRectangle(2, 2, 4, 4) should equal(Canvas(array))
 			}
 		}
+
+		"Doing a fill" should {
+
+			"fill in a 4 x 4 space" in {
+				val canvas = Canvas.create(4, 4).drawRectangle(1, 1, 4, 4)
+
+				val array =
+					Seq(
+						Seq.fill[Char](6)('-'),
+						Seq('|', 'X', 'X', 'X', 'X', '|'),
+						Seq('|', 'X', 'A', 'A', 'X', '|'),
+						Seq('|', 'X', 'A', 'A', 'X', '|'),
+						Seq('|', 'X', 'X', 'X', 'X', '|'),
+						Seq.fill[Char](6)('-'))
+
+				canvas.drawFill(2, 2, 'A') should equal(Canvas(array))
+			}
+
+			"fill the whole canvas" in {
+				val canvas = Canvas.create(4, 4)
+
+				val array =
+					Seq(
+						Seq.fill[Char](6)('-'),
+						Seq('|', 'A', 'A', 'A', 'A', '|'),
+						Seq('|', 'A', 'A', 'A', 'A', '|'),
+						Seq('|', 'A', 'A', 'A', 'A', '|'),
+						Seq('|', 'A', 'A', 'A', 'A', '|'),
+						Seq.fill[Char](6)('-'))
+
+				canvas.drawFill(2, 2, 'A') should equal(Canvas(array))
+			}
+
+			"fill a line" in {
+				val canvas = Canvas.create(4, 4).drawRectangle(2, 1, 2, 4)
+
+				val array =
+					Seq(
+						Seq.fill[Char](6)('-'),
+						Seq('|', 'A', 'X', ' ', ' ', '|'),
+						Seq('|', 'A', 'X', ' ', ' ', '|'),
+						Seq('|', 'A', 'X', ' ', ' ', '|'),
+						Seq('|', 'A', 'X', ' ', ' ', '|'),
+						Seq.fill[Char](6)('-'))
+
+				canvas.drawFill(1, 1, 'A') should equal(Canvas(array))
+			}
+
+			"fill an l shaped section" in {
+				val canvas = Canvas.create(4, 4).drawLine(2, 1, 2, 3).drawLine(2, 3, 4, 3)
+
+				val array =
+					Seq(
+						Seq.fill[Char](6)('-'),
+						Seq('|', 'A', 'X', ' ', ' ', '|'),
+						Seq('|', 'A', 'X', ' ', ' ', '|'),
+						Seq('|', 'A', 'X', 'X', 'X', '|'),
+						Seq('|', 'A', 'A', 'A', 'A', '|'),
+						Seq.fill[Char](6)('-'))
+
+				canvas.drawFill(2, 4, 'A') should equal(Canvas(array))
+			}
+		}
 	}
 }
