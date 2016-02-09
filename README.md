@@ -1,6 +1,4 @@
 
-Springer test
-
 Canvas is an immutable class containing the canvas logic such as draw line/rectangle etc.
 Immutability was used for good functional programming practice. It may have been more efficient to
 	use a mutable object but a small loss of performance was considered negligible in this instance
